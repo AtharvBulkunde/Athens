@@ -94,7 +94,7 @@ python desktop_main.py
 ```
 Or double-click `run-desktop.bat`. Python's Windows documentation recommends using the `py` launcher and `python -m pip` for installing packages. <https://docs.python.org/3.12/installing/>
 
-**Free-only note:** Gemini API is optional; without a key, local actions, saved notes, system status and best-effort web search still work. General-purpose AI answers require a configured provider. For zero cloud API cost, install [Ollama for Windows](https://github.com/ollama/ollama/blob/main/docs/windows.mdx), download a model, and configure local inference in a future integration; the current desktop assistant does not yet call Ollama.
+**Free-only AI:** Gemini is optional. For local AI chat without a cloud API key, install [Ollama for Windows](https://github.com/ollama/ollama/blob/main/docs/windows.mdx), open PowerShell and run `ollama pull llama3.2`, then keep Ollama running. The desktop app will try the local Ollama model when `GEMINI_API_KEY` is not set. Model download size and performance depend on your PC. You can configure `OLLAMA_URL` and `OLLAMA_MODEL` in your local `.env` file.
 
 ## Enable free local AI
 1. Install Ollama from https://ollama.com/download/windows
