@@ -73,6 +73,29 @@ desktop/
   ui.py
 ```
 
+### Advanced free local features
+
+The native app also includes these no-key features:
+- **Persistent memory:** `remember that my project is ATHEN JARVIS`, then `what do you remember`. Notes are stored in a local SQLite database under `memory/` on this PC.
+- **Web search:** `search web for Python 3.12 setup`. This uses a best-effort DuckDuckGo HTML results parser, not an official search API; internet access is required and site changes/rate limits can break results.
+- **System status:** type `system status` to view CPU, RAM, disk usage, OS and battery status when available.
+- **Safe desktop actions:** `open notepad`, `open calculator`, `open paint`, `open youtube`, `open github`, plus date/time. Arbitrary shell commands are not executed.
+
+### Updated desktop setup
+
+From the extracted project folder in PowerShell:
+```powershell
+py -3.12 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -r desktop-requirements.txt
+Copy-Item .env.example .env
+python desktop_main.py
+```
+Or double-click `run-desktop.bat`. Python's Windows documentation recommends using the `py` launcher and `python -m pip` for installing packages. <https://docs.python.org/3.12/installing/>
+
+**Free-only note:** Gemini API is optional; without a key, local actions, saved notes, system status and best-effort web search still work. General-purpose AI answers require a configured provider. For zero cloud API cost, install [Ollama for Windows](https://github.com/ollama/ollama/blob/main/docs/windows.mdx), download a model, and configure local inference in a future integration; the current desktop assistant does not yet call Ollama.
+
 ## Enable free local AI
 1. Install Ollama from https://ollama.com/download/windows
 2. Run:
