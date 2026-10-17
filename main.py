@@ -23,7 +23,7 @@ OLLAMA_URL = (
 )
 OLLAMA_MODEL = (
     os.getenv("OLLAMA_MODEL", "").strip()
-    or ("gemma4:31b" if OLLAMA_API_KEY and OLLAMA_URL.startswith("https://ollama.com") else "llama3.2")
+    or ("gpt-oss:120b-cloud" if OLLAMA_API_KEY and OLLAMA_URL.startswith("https://ollama.com") else "llama3.2")
 )
 OLLAMA_HEADERS = {"Authorization": f"Bearer {OLLAMA_API_KEY}"} if OLLAMA_API_KEY and OLLAMA_URL.startswith("https://") else {}
 app = FastAPI(title=APP_NAME, version="1.1.0")
