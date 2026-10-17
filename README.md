@@ -42,7 +42,7 @@ For Ollama Cloud, create a key at https://ollama.com/settings/keys, then set:
 ```env
 OLLAMA_API_KEY=your_new_key_here
 OLLAMA_URL=https://ollama.com
-OLLAMA_MODEL=gemma4:31b
+OLLAMA_MODEL=gpt-oss:120b-cloud
 ```
 
 For local Ollama instead, leave `OLLAMA_API_KEY` blank and use:
