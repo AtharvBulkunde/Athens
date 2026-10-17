@@ -15,6 +15,7 @@ from desktop.voice import listen_once, speak
 class UiSignals(QObject):
     message = pyqtSignal(str, str)
     status = pyqtSignal(str)
+    ready = pyqtSignal()
 
 
 class JarvisWindow(QWidget):
@@ -24,6 +25,7 @@ class JarvisWindow(QWidget):
         self.signals = UiSignals()
         self.signals.message.connect(self.add_message)
         self.signals.status.connect(self.set_status)
+        self.signals.ready.connect(self.enable_controls)
         self.setWindowTitle("ATHEN JARVIS — Desktop Command Center")
         self.resize(980, 700)
         self.setMinimumSize(700, 520)
@@ -79,6 +81,10 @@ class JarvisWindow(QWidget):
     def set_status(self, value: str):
         self.status.setText(value)
 
+    def enable_controls(self):
+        self.send_button.setEnabled(True)
+        self.mic_button.setEnabled(True)
+
     def add_message(self, speaker: str, message: str):
         stamp = datetime.now().strftime("%H:%M:%S")
         safe = message.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace("\n", "<br>")
@@ -99,7 +105,7 @@ class JarvisWindow(QWidget):
         self.signals.message.emit(f"ATHEN · {language.upper()}", answer)
         self.signals.status.emit("SYSTEM ONLINE")
         speak(answer)
-        self.send_button.setEnabled(True)
+        self.signals.ready.emit()
 
     def start_listening(self):
         self.mic_button.setEnabled(False)
@@ -119,4 +125,4 @@ class JarvisWindow(QWidget):
             self.signals.message.emit("VOICE", str(exc))
             self.signals.status.emit("SYSTEM ONLINE")
         finally:
-            self.mic_button.setEnabled(True)
+            self.signals.ready.emit()
