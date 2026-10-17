@@ -34,6 +34,45 @@ A local-first JARVIS-inspired assistant with a cyan HUD interface, browser voice
 
 Package installation requires internet access.
 
+## Native Windows desktop assistant (MARK LV-inspired)
+
+The repository also includes a separate **native PyQt6 desktop app**. It does not replace the existing browser dashboard.
+
+### Run the desktop app
+1. Install **Python 3.12** (recommended for audio dependency compatibility).
+2. Double-click `run-desktop.bat`, or use PowerShell:
+   ```powershell
+   py -3.12 -m venv .venv
+   .\.venv\Scripts\Activate.ps1
+   python -m pip install -r desktop-requirements.txt
+   Copy-Item .env.example .env
+   python desktop_main.py
+   ```
+3. Type a message, or press **VOICE** and allow microphone access at the Windows level if requested.
+4. For AI chat, add your own Gemini API key to the local `.env` file as `GEMINI_API_KEY=your_key_here`. Never commit a real key.
+
+### Desktop features and limits
+- Native dark/cyan HUD window.
+- Typed chat and push-to-talk voice input.
+- Speech transcription tries English (India), Marathi, and Hindi; it requires internet for Google's recognition service. Results may vary by microphone, installed audio drivers, and language.
+- Spoken replies use Windows/system voices available through `pyttsx3`; voice language quality depends on installed voices.
+- Optional Gemini text API for conversational responses; usage and availability depend on the provider's current account limits.
+- Safe allowlisted local actions: Notepad, Calculator, Paint, selected websites, date, and time.
+- The desktop app is a **new compatible implementation**, not a complete port of every MARK LV capability. It does not yet include Gemini Live streaming, holographic avatar/lip-sync, plugin marketplace, persistent long-term memory, remote dashboard, or autonomous background monitoring.
+
+### Desktop source structure
+```text
+desktop_main.py
+desktop-requirements.txt
+run-desktop.bat
+desktop/
+  assistant.py
+  actions.py
+  language_manager.py
+  voice.py
+  ui.py
+```
+
 ## Enable free local AI
 1. Install Ollama from https://ollama.com/download/windows
 2. Run:
