@@ -3,3 +3,8 @@
 __pycache__/
 *.py[cod]
 .DS_Store
+
+# Local assistant memory and runtime data
+memory/*.sqlite3
+memory/*.db
+logs/
