@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#030b14">
+  <title>ATHEN JARVIS | AI Command Center</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="shell">
+    <aside class="rail">
+      <div class="brand-mark">A<span>J</span></div>
+      <div class="rail-label">SYSTEM</div>
+      <button class="rail-button active" title="Command center" aria-label="Command center">⌘</button>
+      <button class="rail-button" id="newChat" title="New session" aria-label="New session">＋</button>
+      <div class="rail-bottom"><span class="pulse-dot"></span><span>LOCAL</span></div>
+    </aside>
+    <main class="workspace">
+      <header class="topbar">
+        <div class="title-lockup">
+          <div class="eyebrow">PERSONAL INTELLIGENCE SYSTEM <span class="tiny-line"></span></div>
+          <h1>ATHEN <span>JARVIS</span></h1>
+        </div>
+        <div class="top-meta">
+          <div class="status-chip"><span class="pulse-dot"></span><span id="systemStatus">SYSTEM ONLINE</span></div>
+          <div class="clock" id="clock">--:--:--</div>
+        </div>
+      </header>
+      <section class="dashboard">
+        <div class="main-column">
+          <div class="panel reactor-panel">
+            <div class="panel-heading"><span>01 / NEURAL CORE</span><span class="panel-tag">INTERFACE ACTIVE</span></div>
+            <div class="reactor-stage">
+              <div class="reactor-grid"></div><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div>
+              <div class="core-ring"><div class="core-inner"><div class="core-letter">A</div><div class="core-caption">J.A.R.V.I.S.</div></div></div>
+              <div class="reactor-sweep"></div>
+              <div class="reactor-label label-left">NEURAL<br>NETWORK <b>ACTIVE</b></div>
+              <div class="reactor-label label-right">CORE TEMP<br><b>OPTIMAL</b></div>
+              <div class="reactor-bottom">VOICE INTERFACE <span class="equalizer"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+            </div>
+            <div class="reactor-foot"><span><i class="tiny-dot"></i> ENCRYPTED LOCAL SESSION</span><span>BUILD 01.0.0</span></div>
+          </div>
+          <div class="panel chat-panel">
+            <div class="panel-heading"><span>02 / ASSISTANT CHANNEL</span><span class="panel-tag" id="engineLabel">LOCAL FALLBACK</span></div>
+            <div class="chat-log" id="chatLog" aria-live="polite">
+              <div class="message assistant-message"><div class="message-icon">AJ</div><div><div class="message-meta">ATHEN JARVIS <span>JUST NOW</span></div><div class="bubble">Good day. All primary interface systems are online. How may I assist you?</div></div></div>
+            </div>
+            <form id="chatForm" class="composer">
+              <label class="sr-only" for="prompt">Message JARVIS</label><span class="input-prefix">›</span>
+              <textarea id="prompt" rows="1" placeholder="ENTER A COMMAND OR ASK A QUESTION..." maxlength="4000"></textarea>
+              <button class="mic-button" id="voiceButton" type="button" title="Voice input">MIC</button>
+              <button class="send-button" id="sendButton" type="submit" aria-label="Send message">↑</button>
+            </form>
+            <div class="chat-hint"><span>ENTER TO TRANSMIT</span><span>VOICE INPUT REQUIRES MIC PERMISSION</span></div>
+          </div>
+        </div>
+        <aside class="side-column">
+          <div class="panel telemetry">
+            <div class="panel-heading"><span>03 / TELEMETRY</span><span class="live-label">LIVE</span></div>
+            <div class="telemetry-row"><span>AI ENGINE</span><b id="aiStatus">CHECKING</b></div><div class="meter"><i id="aiMeter"></i></div>
+            <div class="telemetry-row"><span>VOICE SYSTEM</span><b id="voiceStatus">STANDBY</b></div><div class="meter"><i class="meter-mid"></i></div>
+            <div class="telemetry-row"><span>SESSION MEMORY</span><b id="memoryStatus">ACTIVE</b></div><div class="meter"><i class="meter-full"></i></div>
+            <div class="telemetry-note"><span class="pulse-dot"></span> LOCALHOST CONNECTION SECURE</div>
+          </div>
+          <div class="panel actions-panel">
+            <div class="panel-heading"><span>04 / QUICK ACTIONS</span><span class="panel-tag">ALLOWLIST</span></div>
+            <p class="panel-description">Select an approved action to execute on this PC.</p>
+            <div class="action-grid">
+              <button data-action="notepad"><span>▤</span>NOTEPAD</button><button data-action="calculator"><span>＋</span>CALCULATOR</button><button data-action="paint"><span>◩</span>PAINT</button><button data-action="google"><span>◎</span>GOOGLE</button><button data-action="youtube"><span>▷</span>YOUTUBE</button><button data-action="github"><span>⌘</span>GITHUB</button>
+            </div>
+            <div class="action-warning"><span>!</span> Only approved actions can be launched.</div>
+          </div>
+          <div class="panel voice-panel">
+            <div class="panel-heading"><span>05 / AUDIO OUTPUT</span><span class="panel-tag">TTS</span></div>
+            <div class="voice-control"><div class="speaker-icon">)))</div><div class="voice-copy"><b>VOICE RESPONSE</b><span>Read latest assistant reply aloud</span></div><button id="speakButton" class="outline-button">SPEAK</button></div>
+            <div class="voice-control"><div class="speaker-icon">◌</div><div class="voice-copy"><b>STOP AUDIO</b><span>Stop current spoken response</span></div><button id="stopButton" class="outline-button">STOP</button></div>
+          </div>
+        </aside>
+      </section>
+      <footer class="footer"><span>ATHEN JARVIS <b>PERSONAL AI</b></span><span>DESIGNED FOR LOCAL DESKTOP USE <i class="tiny-dot"></i></span><span>ALL SYSTEMS NOMINAL</span></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
